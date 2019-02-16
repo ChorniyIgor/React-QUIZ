@@ -1,0 +1,24 @@
+.Drawer {
+  position: fixed;
+  background: white;
+  height: 100vh;
+  width: 80%;
+  max-width: 300px;
+  z-index: 90;
+  transform: translateX(-300px);
+  transition: transform 0.3s;
+}
+
+.DrawerOpen {
+  transform: translateX(0px);
+}
+
+.Drawer ul {
+  list-style: none;
+  padding-left: 10px;
+}
+
+.Drawer ul li {
+  font-size: 22px;
+  text-transform: uppercase;
+}

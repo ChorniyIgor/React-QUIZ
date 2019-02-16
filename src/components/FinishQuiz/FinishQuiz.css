@@ -1,0 +1,27 @@
+.FinishQuiz {
+  width: 600px;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 20px;
+  color: white;
+  font-size: 17px;
+}
+
+.FinishQuiz ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.FinishQuiz ul li {
+  padding: 5px;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.success {
+  background: #6ad36ac7;
+}
+
+.error {
+  background: #f25555c7;
+}

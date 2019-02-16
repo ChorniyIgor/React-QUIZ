@@ -1,0 +1,16 @@
+.MenuToggle {
+  width: 35px;
+  height: 35px;
+  background: url("./bars.svg") center no-repeat;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  transition: left 0.3s;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.MenuToggleOpen {
+  background: url("./times.svg") center no-repeat;
+  left: 310px;
+}

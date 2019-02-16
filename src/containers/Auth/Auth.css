@@ -1,0 +1,22 @@
+.Auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(270deg, #cef2fa 0%, #59bfef 100%);
+  min-height: 100vh;
+  color: white;
+  text-align: center;
+}
+
+.AuthContainer {
+  transform: translateY(-120px);
+  width: 100%;
+  max-width: 600px;
+}
+
+.AuthForm {
+  background: white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px black;
+  padding: 20px;
+}

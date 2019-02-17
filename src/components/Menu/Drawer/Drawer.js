@@ -1,14 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./Drawer.css";
+import { connect } from "react-redux";
 
 class Drawer extends React.Component {
   get menuItems() {
-    const Menu = [
-      { to: "/", label: "Список", exact: true },
-      { to: "/auth", label: "Авторизація", exact: false },
-      { to: "/quiz-creator", label: "Створити тест", exact: false }
-    ];
+    let Menu = [{ to: "/", label: "Список", exact: true }];
+
+    if (this.props.isAuthorization) {
+      Menu.push({ to: "/quiz-creator", label: "Створити тест", exact: false });
+      Menu.push({ to: "/logout", label: "Вийти", exact: true });
+    } else {
+      Menu.push({ to: "/auth", label: "Авторизація", exact: false });
+    }
+
     return Menu.map((link, index) => {
       return (
         <li key={index}>
@@ -33,4 +38,10 @@ class Drawer extends React.Component {
   }
 }
 
-export default Drawer;
+function mapStateToProps(state) {
+  return {
+    isAuthorization: !!state.authPage.token
+  };
+}
+
+export default connect(mapStateToProps)(Drawer);

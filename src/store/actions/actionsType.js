@@ -10,3 +10,6 @@ export const QUIZ_RESTART = `QUIZ_RESTART`;
 
 export const ADD_QUESTION_ITEM_TO_LIST = `ADD_QUESTION_ITEM_TO_LIST`;
 export const CLEAN_QUIZ_LIST = `CLEAN_QUIZ_LIST`;
+
+export const AUTH_SUCCESS = `AUTH_SUCCESS`;
+export const AUTH_LOGOUT = `AUTH_LOGOUT`;

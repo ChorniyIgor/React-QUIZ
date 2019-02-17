@@ -12,7 +12,6 @@ export function authReducer(state = initialState, action) {
         token: action.token
       };
     case AUTH_LOGOUT:
-      console.log("work");
       return {
         ...state,
         token: null

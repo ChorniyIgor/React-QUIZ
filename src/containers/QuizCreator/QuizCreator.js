@@ -80,7 +80,6 @@ class QuizCreator extends React.Component {
     evt.preventDefault();
 
     const { question, option1, option2, option3, option4 } = this.state.formControls;
-    const quiz = this.props.quiz.slice();
 
     const questionItem = {
       question: question.value,

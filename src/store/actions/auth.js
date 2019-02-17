@@ -18,9 +18,13 @@ export function auth(email, password, isLogin) {
     });
     const result = await resp.json();
 
-    dispatch(authSuccess(result));
+    const expirationDate = new Date(new Date().getTime() + result.expiresIn * 1000);
+    localStorage.setItem("token", result.idToken);
+    localStorage.setItem("userId", result.localId);
+    localStorage.setItem("expirationDate", expirationDate);
+
+    dispatch(authSuccess(result.idToken));
     dispatch(autoLogout(result.expiresIn));
-    console.log(result);
   };
 }
 
@@ -41,13 +45,28 @@ export function logout() {
   };
 }
 
-export function authSuccess(data) {
-  const expirationDate = new Date(new Date().getTime() + data.expiresIn * 1000);
-  localStorage.setItem("token", data.idToken);
-  localStorage.setItem("userId", data.localId);
-  localStorage.setItem("expirationDate", expirationDate);
+export function authSuccess(token) {
   return {
     type: AUTH_SUCCESS,
-    token: data.idToken
+    token
+  };
+}
+
+export function autoLogin() {
+  return dispatch => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      dispatch(logout());
+    } else {
+      const expirationDate = localStorage.getItem("expirationDate");
+      if (new Date() < new Date(expirationDate)) {
+        dispatch(authSuccess(token));
+        console.log();
+        dispatch(autoLogout((new Date(expirationDate) - new Date()) / 1000));
+      } else {
+        dispatch(logout());
+        console.log("authlogout");
+      }
+    }
   };
 }
